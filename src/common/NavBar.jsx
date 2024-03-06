@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { IoSearch } from "react-icons/io5";
 import categoryData from '../data';
 import axios from 'axios';
+import { IoLibrary } from "react-icons/io5";
+
 
 const NavBar = () => {
      // const [storeData, setStoreData] = useState();
@@ -22,13 +24,14 @@ const NavBar = () => {
      // }, [])
 
      return (
-          <main className=' fixed top-0 z-10 bottom-0  px-8 flex justify-between items-center w-screen shadow-2xl h-[5rem] bg-gradient-to-t from-purple-600 to-purple-400 overflow-x-hidden'>
+          <main className=' fixed top-0 z-10 bottom-0  px-8 flex justify-between items-center w-screen  h-[5rem] bg-gradient-to-t from-slate-100 to-slate-300 overflow-x-hidden'>
 
-               <div>
-                    <p className=' text-xl font-bold '>Digital Library</p>
+               <div className=' flex  justify-center items-center gap-2  '>
+                    <IoLibrary className=' xl:text-2xl text-lg font-bold text-blue-600' />
+                    <p className=' xl:text-xl text-sm font-bold text-slate-500 '>Digital Library</p>
                </div>
-               <div className=' relative w-[20rem] h-[2.4rem]'>
-                    <IoSearch className=' text-blue-600 font-bold text-lg absolute top-[0.8rem] left-2 bottom-0 right-0'/>
+               <div className=' relative xl:w-[20rem] md:w-[28rem] w-[10rem] h-[2.4rem]'>
+                    <IoSearch className=' text-blue-600 font-bold text-lg absolute top-[0.7rem] left-2 bottom-0 right-0'/>
                <input 
                type="text" 
                placeholder='search your book' 
@@ -36,15 +39,19 @@ const NavBar = () => {
 
                </div>
               
-               <ul className=' flex justify-start items-center gap-3'>
+               <ul className=' xl:flex hidden justify-start items-center text-base text-slate-500 font-bold gap-3'>
                    { categoryData?.map((data)=>(
                     <li>{data?.categoryName}</li>
-
                    ))}
                </ul>
-               <div className=' flex justify-center items-center gap-2'>
-                    <button>SignUp</button>
-                    <button>Login</button>
+               <div className=' md:flex hidden justify-center items-center gap-2'>
+                    <button className=' px-2 py-1 bg-blue-500 rounded-lg font-semibold text-sm '>SignUp</button>
+                    <button className=' px-2 py-1 bg-blue-500 rounded-lg font-semibold text-sm '>Login</button>
+               </div>
+               <div className=' md:hidden flex flex-col  gap-1'>
+                    <div className=' w-9 h-1 bg-slate-900'></div>
+                    <div className=' w-9 h-1 bg-slate-900'></div>
+                    <div className=' w-9 h-1 bg-slate-900'></div>
                </div>
           </main>
      )
