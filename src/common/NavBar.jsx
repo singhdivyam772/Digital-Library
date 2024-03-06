@@ -22,7 +22,7 @@ const NavBar = () => {
      // }, [])
 
      return (
-          <main className=' px-5 flex justify-between items-center w-full shadow-2xl h-[5rem] bg-gradient-to-t from-purple-600 to-purple-400 overflow-x-hidden'>
+          <main className=' fixed top-0 z-10 bottom-0  px-8 flex justify-between items-center w-screen shadow-2xl h-[5rem] bg-gradient-to-t from-purple-600 to-purple-400 overflow-x-hidden'>
 
                <div>
                     <p className=' text-xl font-bold '>Digital Library</p>
