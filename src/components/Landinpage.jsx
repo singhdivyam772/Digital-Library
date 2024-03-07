@@ -4,6 +4,7 @@ import NavBar from '../common/NavBar'
 const Landinpage = () => {
   return (
     <div className='w-screen md:h-screen h-[60rem] flex md:justify-center items-center relative bg-[url(/assets/landingbackground.jpg)]'>
+       
         <div className=' md:w-[80rem] md:h-full  flex md:justify-around justify-center items-center md:flex-nowrap flex-wrap'>
           <img
           className=' md:w-[30rem] w-[26rem] object-fill '

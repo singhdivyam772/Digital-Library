@@ -1,7 +1,7 @@
 const categoryData = [
      {
           id: 1,
-          categoryName: 'Top Rated',
+          categoryName: 'Author Name',
           subCategory: [
                {
                     id: 1,
@@ -39,7 +39,7 @@ const categoryData = [
                },
                {
                     id: 4,
-                    name: 'kautilya',
+                    name: 'kautilya2',
                }
           ]
      },
@@ -61,7 +61,7 @@ const categoryData = [
                },
                {
                     id: 4,
-                    name: 'kautilya',
+                    name: 'kautilya3',
                }
           ]
      },
@@ -83,7 +83,7 @@ const categoryData = [
                },
                {
                     id: 4,
-                    name: 'kautilya',
+                    name: 'kautilya4',
                }
           ]
      },
@@ -105,7 +105,7 @@ const categoryData = [
                },
                {
                     id: 4,
-                    name: 'kautilya',
+                    name: 'kautilya5',
                }
           ]
      },
@@ -131,28 +131,6 @@ const categoryData = [
                }
           ]
      },
-     {
-          id: 7,
-          categoryName: 'Author Name',
-          subCategory: [
-               {
-                    id: 1,
-                    name: 'divyam'
-               },
-               {
-                    id: 2,
-                    name: 'akash',
-               },
-               {
-                    id: 3,
-                    name: 'Chanakya'
-               },
-               {
-                    id: 4,
-                    name: 'kautilya',
-               }
-          ]
-     }
 ];
 
 export default categoryData;
