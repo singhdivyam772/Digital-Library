@@ -1,9 +1,9 @@
 import React from 'react'
-import NavBar from '../common/NavBar'
+import NavBar from './NavBar'
 
 const Landinpage = () => {
   return (
-    <div className='w-screen md:h-screen h-[60rem] flex md:justify-center items-center relative bg-[url(/assets/landingbackground.jpg)]'>
+    <div className='w-screen md:h-screen h-[50rem] flex md:justify-center items-center relative bg-[url(/assets/landingbackground.jpg)] overflow-hidden'>
        
         <div className=' md:w-[80rem] md:h-full  flex md:justify-around justify-center items-center md:flex-nowrap flex-wrap'>
           <img

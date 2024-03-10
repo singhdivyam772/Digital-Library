@@ -4,6 +4,7 @@ import categoryData from '../data';
 import axios from 'axios';
 import { IoLibrary } from "react-icons/io5";
 import Hamburger from './Hamburger';
+import data from '../data';
 
 
 const NavBar = () => {
@@ -23,33 +24,12 @@ const NavBar = () => {
                 <input
                     type="text"
                     placeholder='search your book'
-                    className='w-[100%] h-[2.4rem] border-2 pl-7 outline-blue-600 rounded-xl'
+                    className='w-[90%] h-[2.4rem] pl-7 outline-blue-600 transition-all focus:w-[24rem] rounded-xl'
                 />
             </div>
 
             {/* Category navigation section */}
-            <ul className='xl:flex hidden mt-6 justify-start items-center '>
-                {categoryData?.map((category) => (
-
-                    <li key={category?.id} className='group cursor-pointer'>
-                        <a className='  text-base text-slate-500 px-2 font-bold gap-1'>
-                            {category?.categoryName}
-                            <ul
-                            >
-                                {category?.subCategory?.map((subCategory) => (
-                                    <li key={subCategory?.id}>
-                                        <a className='absolute top-[5rem]  hidden group-hover:flex w-[100px] h-[200px] group-hover:z-50 -z-10
-                                    bg-slate-50 justify-center items-center rounded-md shadow-xl pr-2 text-left'>
-                                            {subCategory?.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </a>
-
-                    </li>
-                ))}
-            </ul>
+           
 
             {/* Sign up and Login buttons section */}
             <div className='md:flex hidden justify-center items-center gap-2'>

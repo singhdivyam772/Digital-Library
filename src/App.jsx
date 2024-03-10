@@ -1,15 +1,33 @@
 import './App.css'
-import NavBar from './common/NavBar'
+import NavBar from './components/NavBar'
 import Landinpage from './components/Landinpage'
 import BooksCategory from './components/BooksCategory'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Audio } from 'react-loader-spinner';
 
 function App() {
+  const [books, setBooks] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://gutendex.com/books/');
+        setBooks(response.data);
+      } catch (error) {
+        console.log('Error fetching books:', error);
+      }
+    };
+    fetchData();
+  }, [])
+  // console.log(books)
+  
   return (
-    <div className='w-screen min-h-screen relative flex flex-col justify-center items-center  overflow-x-hidden'>
-    <NavBar/>
-    <Landinpage/>
-    {/* <BooksCategory/> */}
-  </div>
+    <div className=''>
+      <NavBar />
+      <Landinpage />
+      <BooksCategory books = {books}/>
+    </div>
   )
 }
 
