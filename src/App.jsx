@@ -1,41 +1,17 @@
 import './App.css'
-import NavBar from './components/NavBar'
+import BookDownload from './components/BookDownload'
 import Landinpage from './components/Landinpage'
-import BooksCategory from './components/BooksCategory'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Audio } from 'react-loader-spinner';
-import Loading from './common/Loading'
+import NavBar from './components/NavBar'
+import { Routes, Route } from "react-router-dom"
 
-
-function App() {
-  const [books, setBooks] = useState();
-  const [isLoading, setIsLoading] = useState(false)
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get('https://gutendex.com/books/');
-        setBooks(response.data);
-      } catch (error) {
-        console.log('Error fetching books:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-  
-  
+function App() {  
   return (
     <div className=''>
-      <NavBar />
-      <Landinpage />
-      {
-        isLoading 
-          ? <Loading/> 
-          : <BooksCategory books = {books}/>
-      }
+      <NavBar/>
+      <Routes>
+        <Route path='/' element={<Landinpage />}/>
+        <Route path='/download' element={<BookDownload/>} />
+      </Routes>
     </div>
   )
 }

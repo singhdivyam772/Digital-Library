@@ -9,13 +9,13 @@ import data from '../data';
 
 const NavBar = () => {
     return (
-        <main className='fixed top-0 z-10 bottom-0 px-8 flex justify-between items-center w-[100%] h-[20%] py-2 
-        bg-gradient-to-t from-slate-100 to-slate-300 overflow-x-hidden'>
+        <main className='fixed top-0 z-10 bottom-0 px-8 flex justify-between items-center w-[100%] h-[15%] py-2 
+        bg-slate-900 overflow-x-hidden'>
 
             {/* Digital Library section */}
             <div className='flex justify-center items-center gap-2'>
                 <IoLibrary className='xl:text-2xl text-lg font-bold text-blue-600' />
-                <p className='xl:text-xl text-sm font-bold text-slate-500'>Digital Library</p>
+                <p className='xl:text-xl text-sm font-bold text-blue-500'>Digital Library</p>
             </div>
 
             {/* Search input section */}
@@ -33,8 +33,8 @@ const NavBar = () => {
 
             {/* Sign up and Login buttons section */}
             <div className='md:flex hidden justify-center items-center gap-2'>
-                <button className='px-2 py-1 bg-blue-500 rounded-lg font-semibold text-sm hover:bg-blue-600'>SignUp</button>
-                <button className='px-2 py-1 bg-blue-500 rounded-lg font-semibold text-sm hover:bg-blue-600'>Login</button>
+                <button className='px-2 py-1 bg-blue-500 rounded-lg text-white font-semibold text-sm hover:bg-blue-600'>SignUp</button>
+                <button className='px-2 py-1 bg-blue-500 rounded-lg text-white font-semibold text-sm hover:bg-blue-600'>Login</button>
             </div>
             <Hamburger />
         </main>

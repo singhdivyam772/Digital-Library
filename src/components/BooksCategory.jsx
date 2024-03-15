@@ -1,12 +1,20 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Loading from '../common/Loading';
+import { Link, useNavigate } from 'react-router-dom'
+import BookDownload from './BookDownload';
 
 const BooksCategory = (props) => {
   const [allBooks, setAllBooks] = useState([]);
   const [nextPageLink, setNextPageLink] = useState('');
   const [prevPageLink, setPrevPageLink] = useState('');
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate();
+
+  const handleNavigate = (bookDetails) => {
+    navigate('/download', { state: { bookDetails } });
+    console.log(bookDetails)
+  }
 
   useEffect(() => {
 
@@ -42,41 +50,40 @@ const BooksCategory = (props) => {
     }
     setIsLoading(false)
   }
- 
+
   // console.log(prevPageLink);
   return (
-    <main className=' flex w-screen justify-center flex-col  items-center min-h-[50vh]'>
+    <main className=' flex w-[screen] justify-center flex-col  items-center min-h-[50vh]'>
 
-     {isLoading 
-        ? <Loading/> 
-        : <div className=' md:w-screen flex flex-wrap bg-slate-200 justify-start items-center gap-4 mt-2 py-2 px-[3rem]'>
+      {isLoading
+        ? <Loading />
+        : <div className=' md:w-[screen] flex flex-wrap bg-slate-900 md:justify-start justify-center  items-center gap-7 py-4 px-2 '>
           {allBooks?.results?.map((booksDetails, index) => {
+            // console.log(booksDetails)
             return (
-              <div className=' md:w-[15rem] px-5 py-3 text-center min-h-[24rem] flex flex-col justify-center items-center bg-white shadow-2xl rounded-xl' key={booksDetails?.id}>
+              <div
+                onClick={() => handleNavigate(booksDetails)}
+                className='md:w-[15rem] w-[18rem] md:px-5 py-3 text-center min-h-[24rem] flex flex-col justify-center items-center bg-white shadow-2xl rounded-xl
+              transition-all cursor-pointer hover:scale-105 md:opacity-90 hover:opacity-100'
+                key={booksDetails?.id}
+              >
                 <img
                   src={booksDetails?.formats?.['image/jpeg']}
                   alt="Book Cover"
-                  loading='lazy'
-                  className=' max-w-[15rem] max-h-[15rem] object-cover border-[1rem] rounded-lg border-blue-400 '
+                  // loading='lazy'
+                  className={`${isLoading ? 'hidden' : 'max-w-[15rem] max-h-[15rem] object-cover border-[0.1rem] rounded-lg border-blue-400'}`}
                 />
-                <p className=' flex flex-col justify-center items'>
-                  <span className=' font-extrabold'>
-                    Title
-                  </span>{` ${booksDetails?.id} ${booksDetails?.title}`}</p>
-                <p className=' flex flex-col justify-center items'>
-                  <span className=' font-extrabold'>
-                    Summary
-                  </span>
-                  {` 
-                  ${booksDetails?.bookshelves.length > 1
-                      ? booksDetails?.bookshelves
-                      : booksDetails?.subjects}`
-                  }
+
+
+                <p className='flex flex-col justify-center items py-2'>
+
+                  {` ${booksDetails?.id} ${booksDetails?.title}`}
                 </p>
-            </div>
-          );
-        })}
-      </div>}
+              </div>
+
+            );
+          })}
+        </div>}
 
       <div>
         <button
