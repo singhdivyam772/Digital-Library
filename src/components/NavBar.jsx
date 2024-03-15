@@ -5,7 +5,7 @@ import axios from 'axios';
 import { IoLibrary } from "react-icons/io5";
 import Hamburger from './Hamburger';
 import data from '../data';
-
+import {Link} from 'react-router-dom'
 
 const NavBar = () => {
     return (
@@ -13,10 +13,10 @@ const NavBar = () => {
         bg-slate-900 overflow-x-hidden'>
 
             {/* Digital Library section */}
-            <div className='flex justify-center items-center gap-2'>
+            <Link to='/' className='flex justify-center items-center gap-2'>
                 <IoLibrary className='xl:text-2xl text-lg font-bold text-blue-600' />
                 <p className='xl:text-xl text-sm font-bold text-blue-500'>Digital Library</p>
-            </div>
+            </Link>
 
             {/* Search input section */}
             <div className='relative xl:w-[20rem] md:w-[28rem] w-[10rem] h-[2.4rem]'>

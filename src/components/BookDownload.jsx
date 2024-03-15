@@ -38,6 +38,7 @@ const BookDownload = (props) => {
         </p>
         <div className='flex md:flex justify-start gap-10 md:w-full flex-wrap'>
           <a
+            target='_blank'
             className='hover:scale-105 transition-all uppercase px-8 py-2 bg-blue-500 rounded-md font-semibold'
             href={location?.state?.bookDetails?.formats?.['text/html']}
             download={location?.state?.bookDetails?.title + ".html"} // Added download attribute
