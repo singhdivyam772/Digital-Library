@@ -20,7 +20,7 @@ const BookDownload = (props) => {
 
       {/* right */}
       <section className=' md:w-[40%] md:h-[30rem] flex flex-col justify-start items-start gap-14 '>
-        <p className=' font-bold md:text-[1.2rem] text-slate-100  tracking-wide'>
+        <p className=' font-bold md:text-[1.2rem] text-slate-100  tracking-wide uppercase'>
           {`${location?.state?.bookDetails?.title}`}<br />
           {
             (location?.state?.bookDetails?.authors.map((data) => data?.name).length > 0)

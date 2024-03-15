@@ -19,12 +19,12 @@ const NavBar = () => {
             </Link>
 
             {/* Search input section */}
-            <div className='relative xl:w-[20rem] md:w-[28rem] w-[10rem] h-[2.4rem]'>
+            <div className='relative xl:w-[20rem] md:w-[28rem] w-[10rem] h-[2.4rem] '>
                 <IoSearch className='text-blue-600 font-bold text-lg absolute top-[0.7rem] left-2 bottom-0 right-0' />
                 <input
                     type="text"
                     placeholder='search your book'
-                    className='w-[90%] h-[2.4rem] pl-7 outline-blue-600 transition-all focus:w-[24rem] rounded-xl'
+                    className='w-[90%] h-[2.4rem] pl-7 outline-blue-600  transition-all focus:w-[24rem] rounded-xl'
                 />
             </div>
 
