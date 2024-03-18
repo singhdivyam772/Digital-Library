@@ -19,20 +19,21 @@ function App() {
     navigate('/download', { state: { bookDetails } });
     setIsDropdownVisible(false)
   };  
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const bookLink = 'https://gutendex.com/books';
+      const response = await axios.get(bookLink);
+      setBooks(response.data);
+    } catch (error) {
+      console.log('Error fetching books:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const bookLink = 'https://gutendex.com/books';
-        const response = await axios.get(bookLink);
-        setBooks(response.data);
-      } catch (error) {
-        console.log('Error fetching books:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchData();
   }, []);
 
@@ -94,7 +95,7 @@ function App() {
 </div>
 
         
-      <NavBar />
+      <NavBar fetchData={fetchData} />
       <Routes>
         <Route
           path='/'

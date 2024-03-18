@@ -6,13 +6,16 @@ import { IoLibrary } from "react-icons/io5";
 import Hamburger from './Hamburger';
 import {Link} from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({fetchData}) => {
+    const refetchHandler = ()=>{
+        fetchData();
+    }
     return (
         <main className='fixed top-0 z-10 bottom-0 px-8 flex justify-between items-center w-[100%] h-[15%] py-2 
         bg-slate-900 overflow-x-hidden'>
 
             {/* Digital Library section */}
-            <Link to='/' className='flex justify-center items-center gap-2'>
+            <Link to='/' className='flex justify-center items-center gap-2' onClick={refetchHandler}>
                 <IoLibrary className='xl:text-2xl text-lg font-bold text-blue-600' />
                 <p className='xl:text-xl text-sm font-bold text-blue-500'>Digital Library</p>
             </Link>
