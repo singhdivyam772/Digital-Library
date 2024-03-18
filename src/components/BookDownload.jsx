@@ -2,16 +2,18 @@ import React from 'react';
 import { useLocation } from 'react-router';
 import BooksCategory from './BooksCategory';
 const BookDownload = (props) => {
-  const books = props.books
   const location = useLocation();
+  const title = location?.state?.bookDetails?.title;
+  const author = (location?.state?.bookDetails?.authors.map((data) => data?.name).length > 0)
+  const image = location?.state?.bookDetails?.formats?.['image/jpeg']
   console.log(location)
   return (
-    <main className='md:w-[screen] h-screen  flex flex-wrap justify-evenly items-center mt-[6rem] bg-slate-800'>
+    <main className='md:w-[screen] h-screen flex flex-wrap justify-evenly items-center mt-[6rem] bg-slate-800'>
 
       {/* left */}
       <section className='md:w-[26rem] md:h-[30rem] shadow-2xl flex justify-start items-center '>
         <img
-          src={location?.state?.bookDetails?.formats?.['image/jpeg']}
+          src={image}
           alt="Book Cover"
           loading='lazy'
           className='md:w-[30rem] md:h-[100%] object-fill'
@@ -21,9 +23,9 @@ const BookDownload = (props) => {
       {/* right */}
       <section className=' md:w-[40%] md:h-[30rem] flex flex-col justify-start items-start gap-14 '>
         <p className=' font-bold md:text-[1.2rem] text-slate-100  tracking-wide uppercase'>
-          {`${location?.state?.bookDetails?.title}`}<br />
+          {`${title}`}<br />
           {
-            (location?.state?.bookDetails?.authors.map((data) => data?.name).length > 0)
+            author
               ? <span className=' text-[1.2rem] underline flex justify-start text-red-500 leading-[3rem]'>by: {location?.state?.bookDetails?.authors.map((data) => data?.name)}
               </span>
               : ''

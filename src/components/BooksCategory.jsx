@@ -2,26 +2,21 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Loading from '../common/Loading';
 import { Link, useNavigate } from 'react-router-dom'
-import BookDownload from './BookDownload';
 
 const BooksCategory = (props) => {
+  const {books, isLoading} = props;
   const [allBooks, setAllBooks] = useState([]);
   const [nextPageLink, setNextPageLink] = useState('');
   const [prevPageLink, setPrevPageLink] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
+  // const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
-
   const handleNavigate = (bookDetails) => {
     navigate('/download', { state: { bookDetails } });
     console.log(bookDetails)
   }
-
   useEffect(() => {
-
-    setAllBooks(props.books);
-
-
-  }, [props.books]);
+    setAllBooks(books);
+  }, [books]);
 
   const changeToNext = async () => {
     setIsLoading(true)
@@ -51,15 +46,14 @@ const BooksCategory = (props) => {
     setIsLoading(false)
   }
 
-  // console.log(prevPageLink);
+
   return (
-    <main className=' flex w-[screen] justify-center flex-col  items-center min-h-[50vh]'>
+    <main className=' flex w-[100vw] overflow-x-hidden justify-center flex-col  items-center min-h-[50vh]'>
 
       {isLoading
         ? <Loading />
-        : <div className=' md:w-[screen] flex flex-wrap bg-slate-900 md:justify-start justify-center  items-center gap-7 py-4 px-2 '>
+        : <div className=' md:w-[100%] flex flex-wrap bg-slate-900 md:justify-start justify-center  items-center gap-7 py-4 px-2 '>
           {allBooks?.results?.map((booksDetails, index) => {
-            // console.log(booksDetails)
             return (
               <div
                 onClick={() => handleNavigate(booksDetails)}
@@ -70,21 +64,15 @@ const BooksCategory = (props) => {
                 <img
                   src={booksDetails?.formats?.['image/jpeg']}
                   alt="Book Cover"
-                  // loading='lazy'
                   className={`${isLoading ? 'hidden' : 'max-w-[15rem] max-h-[15rem] object-cover border-[0.1rem] rounded-lg border-blue-400'}`}
                 />
-
-
                 <p className='flex flex-col justify-center items py-2'>
-
                   {` ${booksDetails?.id} ${booksDetails?.title}`}
                 </p>
               </div>
-
             );
           })}
         </div>}
-
       <div>
         <button
           onClick={changeToPrev}
@@ -101,7 +89,6 @@ const BooksCategory = (props) => {
         </button>
       </div>
     </main>
-
   );
 };
 

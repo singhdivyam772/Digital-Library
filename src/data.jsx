@@ -1,152 +1,25 @@
-
-// const categoryData = [
-//      {
-//           id: 1,
-//           categoryName: 'Author Name',
-//           subCategory: [
-//                {
-//                     id: 1,
-//                     name: 'divyam'
-//                },
-//                {
-//                     id: 2,
-//                     name: 'akash',
-//                },
-//                {
-//                     id: 3,
-//                     name: 'Chanakya'
-//                },
-//                {
-//                     id: 4,
-//                     name: 'kautilya',
-//                }
-//           ]
-//      },
-//      {
-//           id: 2,
-//           categoryName: 'Politics',
-//           subCategory: [
-//                {
-//                     id: 1,
-//                     name: 'divyam'
-//                },
-//                {
-//                     id: 2,
-//                     name: 'akash',
-//                },
-//                {
-//                     id: 3,
-//                     name: 'Chanakya'
-//                },
-//                {
-//                     id: 4,
-//                     name: 'kautilya2',
-//                }
-//           ]
-//      },
-//      {
-//           id: 3,
-//           categoryName: 'Religious',
-//           subCategory: [
-//                {
-//                     id: 1,
-//                     name: 'divyam'
-//                },
-//                {
-//                     id: 2,
-//                     name: 'akash',
-//                },
-//                {
-//                     id: 3,
-//                     name: 'Chanakya'
-//                },
-//                {
-//                     id: 4,
-//                     name: 'kautilya3',
-//                }
-//           ]
-//      },
-//      {
-//           id: 4,
-//           categoryName: 'Movies',
-//           subCategory: [
-//                {
-//                     id: 1,
-//                     name: 'divyam'
-//                },
-//                {
-//                     id: 2,
-//                     name: 'akash',
-//                },
-//                {
-//                     id: 3,
-//                     name: 'Chanakya'
-//                },
-//                {
-//                     id: 4,
-//                     name: 'kautilya4',
-//                }
-//           ]
-//      },
-//      {
-//           id: 5,
-//           categoryName: 'RomCom',
-//           subCategory: [
-//                {
-//                     id: 1,
-//                     name: 'divyam'
-//                },
-//                {
-//                     id: 2,
-//                     name: 'akash',
-//                },
-//                {
-//                     id: 3,
-//                     name: 'Chanakya'
-//                },
-//                {
-//                     id: 4,
-//                     name: 'kautilya5',
-//                }
-//           ]
-//      },
-//      {
-//           id: 6,
-//           categoryName: 'Most Popular',
-//           subCategory: [
-//                {
-//                     id: 1,
-//                     name: 'divyam'
-//                },
-//                {
-//                     id: 2,
-//                     name: 'akash',
-//                },
-//                {
-//                     id: 3,
-//                     name: 'Chanakya'
-//                },
-//                {
-//                     id: 4,
-//                     name: 'kautilya',
-//                }
-//           ]
-//      },
-// ];
-
-// export default categoryData;
-
-
-
-
-
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
 
 const data = () => {
-   
-   
-
+  const [books, setBooks] = useState();
+  const [isLoading, setIsLoading] = useState(false)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let pageNumber = (Math.random() * 100).toFixed(0);
+        setIsLoading(true);
+        const bookLink = `https://gutendex.com/books/?page=${pageNumber}`;
+        const response = await axios.get(bookLink);
+        setBooks(response.data);
+      } catch (error) {
+        console.log('Error fetching books:', error);
+        setBooks(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       
